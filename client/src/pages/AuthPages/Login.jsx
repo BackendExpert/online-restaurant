@@ -3,8 +3,10 @@ import useForm from '../../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import DefaultInput from '../../component/Form/DefaultInput'
 import DefaultButton from '../../component/Buttons/DefaultButton'
+import { useAuth } from '../../context/AuthContext'
 
 const Login = () => {
+    const { login } = useAuth()
     const { values, handleChange } = useForm({
         email: '',
         password: '',
@@ -12,15 +14,30 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const handleLogin = (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            console.log("Login Submitted ✅", values)
-            navigate('/my-account')
+            const res = await API.post('/auth/login', values);
+            if (res.data.success === true) {
+                alert(res.data.message);
+                login(res.data.token);
+                const decoded = jwtDecode(res.data.token);
+                const role = decoded?.role;
+
+                if (role === "admin" || role === "staff" || role === "supervisor") {
+                    navigate('/Dashboard')
+                } else if (role === "intern") {
+                    navigate('/my-account')
+                } else {
+                    navigate('/')
+                }
+            } else {
+                alert(res.data.message);
+            }
         } catch (err) {
-            console.error("Login Error ❌", err)
+            console.log(err);
         }
-    }
+    };
 
     return (
         <div
@@ -40,7 +57,7 @@ const Login = () => {
                     Log in to your account to continue 🚀
                 </p>
 
-                <form onSubmit={handleLogin} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <DefaultInput
                         label="Email"
                         type="email"

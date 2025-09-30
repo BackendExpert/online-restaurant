@@ -3,8 +3,10 @@ import useForm from '../../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import DefaultInput from '../../component/Form/DefaultInput'
 import DefaultButton from '../../component/Buttons/DefaultButton'
+import { useAuth } from '../../context/AuthContext'
 
 const SignUp = () => {
+    const { handleEmailVerificationToken } = useAuth()
     const { values, handleChange } = useForm({
         username: '',
         email: '',
@@ -13,13 +15,21 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const handleSignUp = (e) => {
-        e.preventDefault()
+    const headlesubmit = async (e) => {
+        e.preventDefault();
         try {
-            console.log("Form Submitted ✅", values)
-            navigate('/my-account')
-        } catch (err) {
-            console.error("SignUp Error ❌", err)
+            const res = await API.post('/auth/register', values)
+            if (res.data.success === true) {
+                alert(res.data.message)
+                handleEmailVerificationToken(res.data.token)
+                navigate('/verify-email')
+            }
+            else if (res.data.success === false) {
+                alert(res.data.message)
+            }
+        }
+        catch (err) {
+            console.log(err)
         }
     }
 
@@ -41,7 +51,7 @@ const SignUp = () => {
                     Join us today and unlock amazing features 🚀
                 </p>
 
-                <form onSubmit={handleSignUp} className="space-y-6">
+                <form onSubmit={headlesubmit} className="space-y-6">
                     <DefaultInput
                         label="Username"
                         name="username"
