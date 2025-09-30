@@ -14,6 +14,8 @@ const ConnectDB = require("./config/DB");
 
 // all routes
 
+const authRoute = require('./routes/auth.router')
+
 const app = express();
 ConnectDB()
 
@@ -36,11 +38,7 @@ app.use(morgan("combined"));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// app.use('uploads', (req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-//     next();
-// }, express.static(path.join(__dirname, 'uploads')));
-
+app.use('/auth', authRoute)
 
 app.get("/", (req, res) => {
     res.send(`✅ Server running on port ${PORT}`);
