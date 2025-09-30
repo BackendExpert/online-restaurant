@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import meals from "./SamleProducts"; // adjust import path
+import meals from "./SamleProducts"; // adjust path
 
 const Meals = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -16,7 +16,7 @@ const Meals = () => {
         .filter((m) => (selectedCategory === "All" ? true : m.category === selectedCategory))
         .filter((m) => (selectedTag === "All" ? true : m.tags.some((t) => t.name === selectedTag)))
         .filter((m) => {
-            const price = Number(m.price.replace(/[^0-9.]/g, "")); // strip $
+            const price = Number(m.price.replace(/[^0-9.]/g, ""));
             return price <= priceRange;
         })
         .sort((a, b) => {
@@ -24,19 +24,19 @@ const Meals = () => {
             const priceB = Number(b.price.replace(/[^0-9.]/g, ""));
             if (sortOption === "low") return priceA - priceB;
             if (sortOption === "high") return priceB - priceA;
-            return 0; // best match = no sort
+            return 0;
         });
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-20 flex gap-8 py-40">
-            {/* Sidebar Filters */}
-            <aside className="w-1/4 hidden lg:block bg-white rounded-2xl shadow-lg p-6 h-fit sticky top-20">
+        <div className="max-w-7xl mx-auto px-6 py-20 space-y-8 py-24">
+            {/* Filters Section */}
+            <section className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
                 <h2 className="text-xl font-bold text-orange-600 mb-4">Filters</h2>
 
                 {/* Categories */}
-                <div className="mb-6">
+                <div>
                     <h3 className="font-semibold text-gray-800 mb-2">Categories</h3>
-                    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <ul className="grid grid-cols-3 sm:grid-cols-10 gap-2">
                         {categories.map((cat) => (
                             <li
                                 key={cat}
@@ -53,15 +53,15 @@ const Meals = () => {
                 </div>
 
                 {/* Tags */}
-                <div className="mb-6">
+                <div>
                     <h3 className="font-semibold text-gray-800 mb-2">Tags</h3>
                     <ul className="flex flex-wrap gap-2">
                         {tags.map((tag) => (
                             <li
                                 key={tag}
                                 className={`cursor-pointer px-3 py-1 rounded-full border transition ${selectedTag === tag
-                                    ? "bg-orange-500 text-white border-orange-500"
-                                    : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                                        ? "bg-orange-500 text-white border-orange-500"
+                                        : "border-gray-300 text-gray-700 hover:bg-gray-100"
                                     }`}
                                 onClick={() => setSelectedTag(tag)}
                             >
@@ -72,7 +72,7 @@ const Meals = () => {
                 </div>
 
                 {/* Price Range */}
-                <div className="mb-6">
+                <div>
                     <h3 className="font-semibold text-gray-800 mb-2">Price Range</h3>
                     <input
                         type="range"
@@ -98,15 +98,15 @@ const Meals = () => {
                         <option value="high">Price: High to Low</option>
                     </select>
                 </div>
-            </aside>
+            </section>
 
-            {/* Meals Grid */}
-            <main className="flex-1">
-                <h1 className="text-3xl font-extrabold text-gray-900 mb-8">Our Meals</h1>
+            {/* Meals Grid Section */}
+            <section>
+                <h1 className="text-3xl font-extrabold text-gray-900 mb-6">Our Meals</h1>
                 {filteredMeals.length === 0 ? (
                     <p className="text-gray-500">No meals found for selected filters.</p>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {filteredMeals.map((meal) => (
                             <div
                                 key={meal.id}
@@ -145,7 +145,7 @@ const Meals = () => {
                         ))}
                     </div>
                 )}
-            </main>
+            </section>
         </div>
     );
 };

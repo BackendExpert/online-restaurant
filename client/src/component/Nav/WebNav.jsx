@@ -34,9 +34,7 @@ const WebNav = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ${isHome && !scrolled
-                ? "bg-transparent"
-                : "backdrop-blur-lg bg-black shadow-lg"
+            className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ${isHome && !scrolled ? "bg-transparent" : "bg-black shadow-lg"
                 }`}
         >
             <div className="flex justify-between items-center h-20 px-6 md:px-16 lg:px-32">
@@ -51,12 +49,14 @@ const WebNav = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-10 text-white text-lg font-medium">
                     {navLinks.map((link) => (
-                        <a key={link.path} href={link.path}
+                        <Link
+                            key={link.path}
+                            to={link.path}
                             className={`relative transition-colors duration-300 hover:text-orange-500 ${location.pathname === link.path ? "text-orange-500" : ""
                                 }`}
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -73,7 +73,7 @@ const WebNav = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-sm bg-black/95 text-white transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+                className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-sm bg-black text-white transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
                 <div className="flex justify-between items-center px-6 py-6 border-b border-gray-700">
