@@ -14,8 +14,8 @@ const WebNav = () => {
     const navLinks = [
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
-        { name: "Menu", path: "/menu" },
-        { name: "Contact", path: "/contact" },
+        { name: "Products", path: "/products" },
+        { name: "My Account", path: "/my-account" },
     ];
 
     // Track scroll position

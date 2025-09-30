@@ -1,5 +1,8 @@
 import React from 'react'
 import DefaultButton from '../component/Buttons/DefaultButton'
+import Discounts from './HomePage/Discounts'
+import HotDeals from './HomePage/HotDeals'
+import CustomerFeedbacks from './HomePage/CustomerFeedbacks'
 
 const HomePage = () => {
     return (
@@ -40,6 +43,16 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="my-16 max-w-7xl mx-8 md:mx-auto">
+                <Discounts />
+
+                <HotDeals />
+
+                <CustomerFeedbacks />
+            </div>
+
+
         </div>
     )
 }
