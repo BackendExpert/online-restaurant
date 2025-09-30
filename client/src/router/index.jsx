@@ -5,6 +5,8 @@ import WebSite from '../layouts/WebSite'
 import About from '../pages/About/About'
 import DefultError from '../component/Errors/DefultError'
 import Meals from '../pages/Meals/Meals'
+import SignUp from '../pages/AuthPages/SignUp'
+import Login from '../pages/AuthPages/Login'
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
                     <Route index element={<HomePage />} />
                     <Route path='/about' element={<About /> } />
                     <Route path='/meals' element={<Meals /> } />
+                    <Route path='/create-account' element={<SignUp /> } />
+                    <Route path='/login' element={<Login /> } />
                     <Route path='/test' element={<TestForm />} />
                 </Route>
             </Routes>
