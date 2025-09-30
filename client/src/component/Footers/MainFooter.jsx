@@ -111,9 +111,9 @@ const MainFooter = () => {
                         <h2 className="text-white font-semibold text-lg mb-4">
                             Contact Us
                         </h2>
-                        <p className="text-sm">123 Main Street, Colombo, Sri Lanka</p>
-                        <p className="text-sm mt-2">Email: info@zavory.com</p>
-                        <p className="text-sm mt-1">Phone: +94 77 123 4567</p>
+                        <p className="text-sm">123 Cross Street, ABC, XYZ</p>
+                        <p className="text-sm mt-2">Email: info.zavory@example.com</p>
+                        <p className="text-sm mt-1">Phone: +94 711758851</p>
 
                         {/* Social Icons */}
                         <div className="flex space-x-4 mt-4">
