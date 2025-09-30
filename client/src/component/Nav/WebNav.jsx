@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Logo from "../../assets/Logo.png";
+import { useAuth } from "../../context/AuthContext";
 
 const WebNav = () => {
-
+    const { auth } = useAuth()
     const location = useLocation();
     const isHome = location.pathname === "/";
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const WebNav = () => {
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
         { name: "Meals", path: "/meals" },
-        { name: "My Account", path: "/my-account" },
+        { name: auth.token === null ? "Login" : auth?.user?.username, path: auth.token === null ? '/login' : '/Dashboard' },
     ];
 
     // Track scroll position
