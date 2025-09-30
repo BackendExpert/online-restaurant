@@ -4,7 +4,7 @@ import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Logo from "../../assets/Logo.png";
 
 const WebNav = () => {
-    
+
     const location = useLocation();
     const isHome = location.pathname === "/";
     const [isOpen, setIsOpen] = useState(false);
@@ -50,16 +50,17 @@ const WebNav = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-10 text-white text-lg font-medium">
                     {navLinks.map((link) => (
-                        <Link
+                        <a
                             key={link.path}
-                            to={link.path}
+                            href={link.path}
                             className={`relative transition-colors duration-300 hover:text-orange-500 ${location.pathname === link.path ? "text-orange-500" : ""
                                 }`}
                         >
                             {link.name}
-                        </Link>
+                        </a>
                     ))}
                 </div>
+
 
                 {/* Mobile Hamburger */}
                 <div className="md:hidden flex items-center">
