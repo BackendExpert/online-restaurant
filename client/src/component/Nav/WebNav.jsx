@@ -14,7 +14,7 @@ const WebNav = () => {
     const navLinks = [
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
-        { name: "Products", path: "/products" },
+        { name: "Meals", path: "/meals" },
         { name: "My Account", path: "/my-account" },
     ];
 
@@ -35,8 +35,8 @@ const WebNav = () => {
     return (
         <nav
             className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ${isHome && !scrolled
-                    ? "bg-transparent"
-                    : "backdrop-blur-lg bg-black shadow-lg"
+                ? "bg-transparent"
+                : "backdrop-blur-lg bg-black shadow-lg"
                 }`}
         >
             <div className="flex justify-between items-center h-20 px-6 md:px-16 lg:px-32">
@@ -51,14 +51,12 @@ const WebNav = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-10 text-white text-lg font-medium">
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            to={link.path}
+                        <a key={link.path} href={link.path}
                             className={`relative transition-colors duration-300 hover:text-orange-500 ${location.pathname === link.path ? "text-orange-500" : ""
                                 }`}
                         >
                             {link.name}
-                        </Link>
+                        </a>
                     ))}
                 </div>
 

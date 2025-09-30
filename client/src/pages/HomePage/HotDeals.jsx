@@ -50,7 +50,7 @@ const HotDeals = () => {
     return (
         <div className="py-10 px-4 sm:px-6 lg:px-12">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-gray-900">
-                Hot Deals
+                Hot Products
             </h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 auto-rows-[200px]">

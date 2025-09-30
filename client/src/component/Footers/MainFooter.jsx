@@ -50,18 +50,18 @@ const MainFooter = () => {
                             </li>
                             <li>
                                 <a
-                                    href="/menu"
+                                    href="/meals"
                                     className="hover:text-orange-500 transition-colors"
                                 >
-                                    Menu
+                                    Meals
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="/contact"
+                                    href="/my-account"
                                     className="hover:text-orange-500 transition-colors"
                                 >
-                                    Contact
+                                    My Account
                                 </a>
                             </li>
                         </ul>
