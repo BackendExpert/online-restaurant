@@ -4,6 +4,7 @@ import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Logo from "../../assets/Logo.png";
 
 const WebNav = () => {
+    
     const location = useLocation();
     const isHome = location.pathname === "/";
     const [isOpen, setIsOpen] = useState(false);
