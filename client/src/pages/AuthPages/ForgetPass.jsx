@@ -20,7 +20,7 @@ const ForgetPass = () => {
                 handleEmailVerificationToken(res.data.token);
                 navigate('/verify-otp');
             } else {
-                alert(res.data.message);
+                alert(res.data.error);
             }
         } catch (err) {
             console.log(err);
