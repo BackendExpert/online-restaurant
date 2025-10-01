@@ -37,7 +37,7 @@ class AuthService {
                 userAgent: req.headers['user-agent'],
                 timestamp: new Date(),
             };
-            await logUserAction(req, "register", `${email} registered`, metadata, checkuser._id);
+            await logUserAction(req, "register", `${email} registered`, metadata, createuser._id);
         }
 
         // create token for email Verify
@@ -78,13 +78,6 @@ class AuthService {
                             <!-- OTP Box -->
                             <div style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #ff7f50; background: #fff2e6; padding: 20px; text-align: center; border-radius: 12px; margin: 20px 0; box-shadow: 0 5px 15px rgba(255,127,80,0.3);">
                                 ${otp}
-                            </div>
-
-                            <!-- Verify Button -->
-                            <div style="text-align: center; margin: 30px 0;">
-                                <a href="#" style="display: inline-block; background: linear-gradient(90deg, #ff7f50, #ff9f43); color: #fff; font-weight: 700; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-size: 16px; box-shadow: 0 5px 15px rgba(255,127,80,0.4); transition: all 0.3s;">
-                                    Verify Email
-                                </a>
                             </div>
 
                             <p style="font-size: 15px; color: #555; margin-bottom: 10px;">

@@ -27,8 +27,8 @@ const SignUp = () => {
                 navigate('/verify-email')
             }
             else if (res.data.success === false) {
-                alert(res.data.message)
-            }.
+                alert(res.data.error)
+            }
         }
         catch (err) {
             console.log(err)
