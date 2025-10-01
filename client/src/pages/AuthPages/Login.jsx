@@ -27,9 +27,9 @@ const Login = () => {
                 // const role = decoded?.role;
 
                 navigate('/Dashboard')
-
+   
             } else {
-                alert(res.data.error);
+                alert(res.data.message);
             }
         } catch (err) {
             console.log(err);

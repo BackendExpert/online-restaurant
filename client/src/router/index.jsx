@@ -10,6 +10,7 @@ import Login from '../pages/AuthPages/Login'
 import ForgetPass from '../pages/AuthPages/ForgetPass'
 import VerifyEmail from '../pages/AuthPages/VerifyEmail'
 import VerifyOTP from '../pages/AuthPages/VerifyOTP'
+import UpdatePassword from '../pages/AuthPages/UpdatePassword'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path='/forget-password' element={<ForgetPass /> } />
                     <Route path='/verify-email' element={<VerifyEmail /> } />
                     <Route path='/verify-otp' element={<VerifyOTP /> } />
+                    <Route path='/update-password' element={<UpdatePassword /> } />
 
 
                 </Route>
