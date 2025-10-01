@@ -42,7 +42,7 @@ const VerifyEmail = () => {
                 localStorage.clear();
                 navigate('/login', { replace: true });
             } else {
-                alert(res.data.message);
+                alert(res.data.error);
             }
         } catch (err) {
             console.log(err);

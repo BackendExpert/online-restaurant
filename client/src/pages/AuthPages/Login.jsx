@@ -23,18 +23,13 @@ const Login = () => {
             if (res.data.success === true) {
                 alert(res.data.message);
                 login(res.data.token);
-                const decoded = jwtDecode(res.data.token);
-                const role = decoded?.role;
+                // const decoded = jwtDecode(res.data.token);
+                // const role = decoded?.role;
 
-                if (role === "admin" || role === "staff" || role === "supervisor") {
-                    navigate('/Dashboard')
-                } else if (role === "intern") {
-                    navigate('/my-account')
-                } else {
-                    navigate('/')
-                }
+                navigate('/Dashboard')
+
             } else {
-                alert(res.data.message);
+                alert(res.data.error);
             }
         } catch (err) {
             console.log(err);
