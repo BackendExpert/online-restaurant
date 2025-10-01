@@ -28,7 +28,7 @@ const VerifyOTP = () => {
                 alert(res.data.message);
                 navigate('/update-password');
             } else {
-                alert(res.data.message);
+                alert(res.data.error);
             }
         } catch (err) {
             console.error(err);

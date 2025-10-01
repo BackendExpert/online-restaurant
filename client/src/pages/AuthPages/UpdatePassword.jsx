@@ -42,7 +42,7 @@ const UpdatePassword = () => {
                 localStorage.clear();
                 navigate('/login');
             } else {
-                alert(res.data.message);
+                alert(res.data.error);
             }
         } catch (err) {
             console.log(err);
