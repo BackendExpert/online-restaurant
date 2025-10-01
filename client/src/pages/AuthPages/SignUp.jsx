@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import DefaultInput from '../../component/Form/DefaultInput'
 import DefaultButton from '../../component/Buttons/DefaultButton'
 import { useAuth } from '../../context/AuthContext'
+import API from '../../services/api'
+
 
 const SignUp = () => {
     const { handleEmailVerificationToken } = useAuth()
@@ -19,14 +21,14 @@ const SignUp = () => {
         e.preventDefault();
         try {
             const res = await API.post('/auth/register', values)
-            if (res.data.success === true) {
-                alert(res.data.message)
+            if (res?.data?.success === true) {
+                alert(res?.data?.message)
                 handleEmailVerificationToken(res.data.token)
                 navigate('/verify-email')
             }
             else if (res.data.success === false) {
                 alert(res.data.message)
-            }
+            }.
         }
         catch (err) {
             console.log(err)
